@@ -1,0 +1,32 @@
+{{> header}}
+<main>
+  <h1>Tourist Attractions</h1>
+  <form id="searchForm" method="GET">
+    <input type="text" name="city" id="city" placeholder="Enter a city">
+    <button type="submit">Search</button>
+  </form>
+
+  <div id="searchResults">
+    {{#if attractions}}
+      {{#each attractions}}
+      <div class="attraction-card">
+        <h2>{{properties.name}}</h2>
+        <p>{{properties.description}}</p>
+        <p>Rating: {{properties.rate}}</p>
+        {{#if properties.image}}
+        <img src="{{properties.image}}" alt="{{properties.name}}" width="200">
+        {{/if}}
+      </div>
+      {{/each}}
+    {{else}}
+      <p>No attractions found for the given city.</p>
+    {{/if}}
+  </div>
+
+  <div id="list" class="list-group"></div>
+  <button id="next_button" class="btn btn-primary">Next</button>
+</main>
+
+<div id="poi"></div>
+
+<script src="/js/main.js"></script>
